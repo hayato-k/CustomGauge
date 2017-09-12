@@ -127,7 +127,9 @@ public class CustomGauge extends View {
         canvas.drawArc(mRect, mStartAngle, mSweepAngle, false, mPaint);
         mPaint.setColor(mPointStartColor);
 
-        mPaint.setShader(new SweepGradient((float) getWidth(), (float) getHeight(), mPointStartColor, mPointEndColor));
+        int[] colors = {mPointStartColor, mPointEndColor};
+        float[] positions = {0.38f, 1.125f};
+        mPaint.setShader(new SweepGradient((float) getWidth() / 2, (float) getHeight() / 2, colors, positions));
         if (mPointSize > 0) {//if size of pointer is defined
             if (mPoint > mStartAngle + mPointSize / 2) {
                 canvas.drawArc(mRect, mPoint - mPointSize / 2, mPointSize, false, mPaint);
