@@ -3,6 +3,7 @@ package pl.pawelkleczkowski.customgauge;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.SweepGradient;
@@ -129,7 +130,15 @@ public class CustomGauge extends View {
 
         int[] colors = {mPointStartColor, mPointEndColor};
         float[] positions = {0.38f, 1f};
-        mPaint.setShader(new SweepGradient((float) getWidth() / 2, (float) getHeight() / 2, colors, positions));
+        float cx = (float) getWidth() / 2;
+        float cy = (float) getHeight() / 2;
+        SweepGradient sweepGradient = new SweepGradient(cx, cy, colors, positions);
+        float rotate = 270f;
+        Matrix gradientMatrix = new Matrix();
+        gradientMatrix.preRotate(rotate, cx, cy);
+        sweepGradient.setLocalMatrix(gradientMatrix);
+
+        mPaint.setShader(sweepGradient);
         if (mPointSize > 0) {//if size of pointer is defined
             if (mPoint > mStartAngle + mPointSize / 2) {
                 canvas.drawArc(mRect, mPoint - mPointSize / 2, mPointSize, false, mPaint);
