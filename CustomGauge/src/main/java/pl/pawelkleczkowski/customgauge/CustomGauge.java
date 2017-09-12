@@ -133,7 +133,7 @@ public class CustomGauge extends View {
         float cx = (float) getWidth() / 2;
         float cy = (float) getHeight() / 2;
         SweepGradient sweepGradient = new SweepGradient(cx, cy, colors, positions);
-        float rotate = 270f;
+        float rotate = 45f;
         Matrix gradientMatrix = new Matrix();
         gradientMatrix.preRotate(rotate, cx, cy);
         sweepGradient.setLocalMatrix(gradientMatrix);
