@@ -128,7 +128,7 @@ public class CustomGauge extends View {
         mPaint.setColor(mPointStartColor);
 
         int[] colors = {mPointStartColor, mPointEndColor};
-        float[] positions = {0.38f, 1.125f};
+        float[] positions = {0.38f, 1f};
         mPaint.setShader(new SweepGradient((float) getWidth() / 2, (float) getHeight() / 2, colors, positions));
         if (mPointSize > 0) {//if size of pointer is defined
             if (mPoint > mStartAngle + mPointSize / 2) {
