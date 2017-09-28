@@ -110,8 +110,8 @@ public class CustomGauge extends View {
         super.onDraw(canvas);
         float padding = getStrokeWidth();
         float size = getWidth() < getHeight() ? getWidth() : getHeight();
-        float width = size - (2 * padding);
-        float height = size - (2 * padding);
+        float width = size - padding;
+        float height = size - padding;
 //        float radius = (width > height ? width/2 : height/2);
         float radius = (width < height ? width / 2 : height / 2);
 
