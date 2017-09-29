@@ -108,18 +108,12 @@ public class CustomGauge extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        float padding = getStrokeWidth();
-        float size = getWidth() < getHeight() ? getWidth() : getHeight();
-        float width = size - padding;
-        float height = size - padding;
-//        float radius = (width > height ? width/2 : height/2);
-        float radius = (width < height ? width / 2 : height / 2);
+        float strokePadding = getStrokeWidth() / 2;
 
-
-        float rectLeft = (getWidth() - (2 * padding)) / 2 - radius + padding;
-        float rectTop = (getHeight() - (2 * padding)) / 2 - radius + padding;
-        float rectRight = (getWidth() - (2 * padding)) / 2 - radius + padding + width;
-        float rectBottom = (getHeight() - (2 * padding)) / 2 - radius + padding + height;
+        float rectLeft = getPaddingLeft() + strokePadding;
+        float rectTop = getPaddingTop() + strokePadding;
+        float rectRight = getWidth() - getPaddingRight() - strokePadding;
+        float rectBottom = getHeight() - getPaddingBottom() - strokePadding;
 
         mRect.set(rectLeft, rectTop, rectRight, rectBottom);
 
@@ -161,7 +155,6 @@ public class CustomGauge extends View {
                 canvas.drawArc(mRect, mStartAngle + i * mDividerStepAngle, mDividerSize, false, mPaint);
             }
         }
-
     }
 
     public void setValue(int value) {
